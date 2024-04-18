@@ -29,7 +29,7 @@
       </p>
     </form>
     <!-- Register -->
-    <form class="space-y-4" *ngIf="activeForm === 'register'" [formGroup]="loginForm" (ngSubmit)="login()">
+    <form class="space-y-4" *ngIf="activeForm === 'register'" [formGroup]="registerForm" (ngSubmit)="register()">
       <h2 class="text-3xl font-bold text-center">Register</h2>
       <div class="form-group">
         <input type="text" formControlName="username" placeholder="Enter your username"

@@ -44,4 +44,16 @@ export class LoginComponent {
     }
   }
 
+  register() {
+    if (this.registerForm.valid) {
+      console.log("Register Info==>", this.registerForm.value);
+       setTimeout(() => {
+      window.location.reload();
+    }, 2000);
+    this.router.navigate(['/budget-planner/login']);
+    } else {
+  this.snackBar.open('Please Fill The Form Correctly!', 'Close', {duration:3000})
+  }
+  } 
+
 }
