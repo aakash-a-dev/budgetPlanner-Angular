@@ -1,10 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -14,7 +16,7 @@ export class LoginComponent {
 
   activeForm: 'login' | 'register' = 'login'
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private router: Router, private snackBar: MatSnackBar) { }
   
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -28,4 +30,18 @@ export class LoginComponent {
       password: ['', Validators.required]
     })
   }
+
+  toggleForm(form: 'login' | 'register') {
+    this.activeForm = form
+  }
+
+  login() {
+    if (this.loginForm.valid) {
+      console.log("Login Info=>", this.loginForm.value);
+      this.router.navigate(['/budget-planner/dashboard'])
+    } else {
+      this.snackBar.open('Invalid Email/Password!', 'Close', { duration: 3000 });
+    }
+  }
+
 }

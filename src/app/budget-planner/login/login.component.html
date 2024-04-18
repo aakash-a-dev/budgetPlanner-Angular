@@ -1,5 +1,33 @@
 <div class="m-2">
-  <div class="bg-black h-[80px] justify-center items-center border rounded-lg">
-    <h2 class="text-6xl text-white text-center">Budget Planner</h2>
+  <div
+    class="bg-gradient-to-r from-purple-500 to-indigo-600 h-[95px] flex justify-center items-center border rounded-lg shadow-lg">
+    <h2 class="text-4xl md:text-6xl text-white font-bold">Budget Planner</h2>
+  </div>
+</div>
+
+
+<div class="h-screen flex justify-center items-center">
+  <div class="w-full max-w-md p-6 bg-gray-100 rounded-lg shadow-lg">
+    <!-- Login -->
+    <form class="space-y-4" *ngIf="activeForm === 'login'" [formGroup]="loginForm" (ngSubmit)="login()">
+      <h2 class="text-3xl font-bold text-center">Login</h2>
+      <div class="form-group">
+        <input type="email" formControlName="email" placeholder="Enter your email"
+          class="w-full px-4 py-2 rounded-lg border focus:outline-none focus:border-blue-400">
+      </div>
+      <div class="form-group">
+        <input type="password" formControlName="password" placeholder="Enter your password"
+          class="w-full px-4 py-2 rounded-lg border focus:outline-none focus:border-blue-400">
+      </div>
+      <button type="submit" class="w-full bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold py-2 px-4 rounded-lg
+        hover:bg-blue-700 focus:outline-none focus:bg-blue-700">
+        Login
+      </button>
+      <p class="text-center">Don't have an account?
+        <span class="text-blue-600 hover:text-blue-900 hover:text-lg cursor-pointer"
+          (click)="toggleForm('register')">Register</span>
+      </p>
+    </form>
+    <!-- Register -->
   </div>
 </div>
