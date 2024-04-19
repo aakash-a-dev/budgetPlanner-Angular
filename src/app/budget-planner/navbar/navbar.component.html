@@ -3,24 +3,41 @@
     class="flex justify-between items-center bg-gradient-to-r from-purple-500 to-indigo-600 h-[95px] border rounded-lg shadow-lg">
     <div class="ml-4">
       <!-- Logo or brand -->
-      <h1 class="text-4xl md:text-6xl text-white font-bold">Budget Planner</h1>
+      <h1 class="text-4xl md:text-3xl text-white font-bold">Budget Planner</h1>
     </div>
-    <div class="mr-4">
+    <div class="mr-4 md:hidden">
+      <!-- Mobile menu button -->
+      <button class="text-white text-2xl" (click)="toggleMenu()">
+        <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24">
+          <path d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="hidden md:block">
       <!-- Navigation links -->
-      <ul class="flex space-x-12">
+      <ul class="flex space-x-6">
         <li><a href="/budget-planner/dashboard"
-            class="text-white text-2xl text-bold hover:text-gray-300 transition duration-300">Dashboard</a></li>
+            class="text-white text-lg text-bold hover:text-gray-300 transition duration-300">Dashboard</a></li>
         <li><a href="/budget-planner/profile"
-            class="text-white text-2xl text-bold hover:text-gray-300 transition duration-300">Profile</a>
-        </li>
+            class="text-white text-lg text-bold hover:text-gray-300 transition duration-300">Profile</a></li>
         <li><a href="/budget-planner/PrevHistory"
-            class="text-white text-2xl text-bold hover:text-gray-300 transition duration-300">Prev
-            History</a>
-        </li>
+            class="text-white text-lg text-bold hover:text-gray-300 transition duration-300">Prev History</a></li>
         <li><a href="/budget-planner/login"
-            class="text-white text-2xl text-bold hover:text-gray-300 transition duration-300">Log Out</a>
-        </li>
+            class="text-white text-lg text-bold hover:text-gray-300 transition duration-300">Log Out</a></li>
       </ul>
     </div>
+  </div>
+  <!-- Mobile menu -->
+  <div *ngIf="showMobileMenu" class="md:hidden">
+    <ul class="flex flex-col items-center mt-4 space-y-4">
+      <li><a href="/budget-planner/dashboard"
+          class="text-white text-2xl text-bold hover:text-gray-300 transition duration-300 block">Dashboard</a></li>
+      <li><a href="/budget-planner/profile"
+          class="text-white text-2xl text-bold hover:text-gray-300 transition duration-300 block">Profile</a></li>
+      <li><a href="/budget-planner/PrevHistory"
+          class="text-white text-2xl text-bold hover:text-gray-300 transition duration-300 block">Prev History</a></li>
+      <li><a href="/budget-planner/login"
+          class="text-white text-2xl text-bold hover:text-gray-300 transition duration-300 block">Log Out</a></li>
+    </ul>
   </div>
 </nav>
