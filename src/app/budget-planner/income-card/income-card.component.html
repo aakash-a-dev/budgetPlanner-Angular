@@ -8,7 +8,8 @@
         </div>
       </div>
       <hr class="my-4 border-gray-300">
-      <div class="grid grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- Adjusted grid columns for responsiveness -->
         <div>
           <h3 class="text-lg font-semibold text-gray-800">Last Few Months</h3>
           <ul class="mt-2 text-sm text-gray-600">
@@ -19,6 +20,12 @@
           <h3 class="text-lg font-semibold text-gray-800">Current Month</h3>
           <p class="mt-2 text-sm text-gray-600">{{currentMonthIncome}}</p>
         </div>
+      </div>
+      <div class="mt-4 sm:mt-0">
+        <!-- Adjusted margin for button placement -->
+        <button type="button"
+          class="button bg-gradient-to-r font-bold py-2 px-4 border rounded-lg from-purple-500 to-indigo-600 text-sm text-white hover:text-gray-900 focus:outline-none focus:text-gray-900"
+          (click)="navigateToOtherPage()">Add Income</button>
       </div>
     </div>
   </div>

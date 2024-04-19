@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-expense-card',
   standalone: true,
@@ -11,4 +11,10 @@ import { Component, Input } from '@angular/core';
 export class ExpenseCardComponent {
   @Input() lastMonthExpense: string[] = [];
   @Input() currentMonthExpense: string = '';
+
+    constructor(private router: Router) { };
+    navigateToOtherPage(): void {
+    this.router.navigate(['/expense']); 
+  }
+
 }

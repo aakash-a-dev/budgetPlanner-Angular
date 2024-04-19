@@ -1,16 +1,19 @@
 <app-navbar></app-navbar>
 
-<div class="container mx-auto">
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-5">
+<div class="container mx-auto px-4 lg:px-8">
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-5">
     <div class="flex justify-center">
-      <app-income-card [lastMonthIncome]="lastMonthIncome" [currentMonthIncome]="currentMonthIncome"></app-income-card>
+      <app-income-card class="w-full" [lastMonthIncome]="lastMonthIncome" [currentMonthIncome]="currentMonthIncome">
+      </app-income-card> <!-- Added w-full class for full width -->
     </div>
     <div class="flex justify-center">
-      <app-expense-card [lastMonthExpense]="lastMonthExpense" [currentMonthExpense]="currentMonthExpense">
-      </app-expense-card>
+      <app-expense-card class="w-full" [lastMonthExpense]="lastMonthExpense"
+        [currentMonthExpense]="currentMonthExpense"></app-expense-card> <!-- Added w-full class for full width -->
     </div>
     <div class="flex justify-center">
-      <app-todo-transaction [transactionData]="transactionData"></app-todo-transaction>
+      <app-todo-transaction class="w-full" [transactionData]="transactionData"></app-todo-transaction>
+
     </div>
   </div>
 </div>

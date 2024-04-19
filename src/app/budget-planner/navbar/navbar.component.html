@@ -5,20 +5,29 @@
       <!-- Logo or brand -->
       <h1 class="text-4xl md:text-6xl text-white font-bold">Budget Planner</h1>
     </div>
-    <div class="mr-4">
+    <div class="mr-4 md:hidden">
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-toggle" class="text-white focus:outline-none">
+        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="hidden md:flex md:items-center md:space-x-12">
       <!-- Navigation links -->
-      <ul class="flex space-x-12">
+      <ul class="flex">
         <li><a href="/budget-planner/dashboard"
-            class="text-white text-2xl text-bold hover:text-gray-300 transition duration-300">Dashboard</a></li>
+            class="text-white text-lg md:text-2xl font-bold hover:text-gray-300 transition duration-300">Dashboard</a>
+        </li>
         <li><a href="/budget-planner/profile"
-            class="text-white text-2xl text-bold hover:text-gray-300 transition duration-300">Profile</a>
+            class="text-white text-lg md:text-2xl font-bold hover:text-gray-300 transition duration-300">Profile</a>
         </li>
         <li><a href="/budget-planner/PrevHistory"
-            class="text-white text-2xl text-bold hover:text-gray-300 transition duration-300">Prev
+            class="text-white text-lg md:text-2xl font-bold hover:text-gray-300 transition duration-300">Prev
             History</a>
         </li>
         <li><a href="/budget-planner/login"
-            class="text-white text-2xl text-bold hover:text-gray-300 transition duration-300">Log Out</a>
+            class="text-white text-lg md:text-2xl font-bold hover:text-gray-300 transition duration-300">Log Out</a>
         </li>
       </ul>
     </div>

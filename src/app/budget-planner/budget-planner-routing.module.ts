@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { IncomeFormComponent } from './income-form/income-form.component';
+import { ExpenseFormComponent } from './expense-form/expense-form.component';
 
 const routes: Routes = [
   {
@@ -19,6 +21,16 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     title: 'Dashboard'
+  },
+  {
+    path: 'income',
+    component: IncomeFormComponent,
+    title: 'Add Income'
+  },
+  {
+    path: 'expense',
+    component: ExpenseFormComponent,
+    title: 'Add Expense'
   }
 ];
 
