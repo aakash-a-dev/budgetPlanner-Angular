@@ -1,1 +1,83 @@
-<p>income-form works!</p>
+<app-navbar></app-navbar>
+
+<div class="main-container flex justify-center items-center mt-8">
+  <div class="container mx-auto">
+    <h2 class="text-3xl mb-4">Income</h2>
+    <form class="max-w-md mx-auto p-4 bg-white shadow-md rounded-lg" (ngSubmit)="onSubmit()" [formGroup]="incomeForm">
+      <div class="mb-4">
+        <label for="month" class="block font-semibold">Select Month</label>
+        <select formControlName="month" id="month"
+          class="form-select mt-1 block w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          (change)="onChange($event)">
+          <option value="" disabled>Select Month</option>
+          <option value="January">January</option>
+          <option value="February">February</option>
+          <option value="March">March</option>
+        </select>
+      </div>
+      <div class="mb-4">
+        <div class="flex justify-between mb-2">
+          <label for="investment" class="block font-semibold">Investments</label>
+          <span class="text-sm text-gray-500">Optional</span>
+        </div>
+        <select formControlName="investments" id="investments"
+          class="form-select mt-1 block w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          [class.disabled-dropdown]="!monthSelected">
+          <option value="" disabled>Select Investments</option>
+          <option value="401(k)">401(k)</option>
+          <option value="Stocks">Stocks</option>
+          <option value="Real Estate">Real Estate</option>
+        </select>
+      </div>
+      <div class="mb-4">
+        <label for="source" class="block font-semibold">Source of Income</label>
+        <select formControlName="source" id="source"
+          class="form-select mt-1 block w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          [class.disabled-dropdown]="!monthSelected">
+          <option value="" disabled>Select Source</option>
+          <option value="Salary">Salary</option>
+          <option value="Freelancing">Freelancing</option>
+          <option value="Rental Income">Rental Income</option>
+        </select>
+      </div>
+      <div class="mb-4">
+        <label for="amount" class="block font-semibold">Amount</label>
+        <input type="number" formControlName="amount" id="amount"
+          class="form-input mt-1 block w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          placeholder="Enter amount" [class.disabled-dropdown]="!monthSelected">
+      </div>
+      <div class="mb-4">
+        Total Income for {{ selectedMonth }}: ${{ calculateTotalIncome(selectedMonth) }}
+      </div>
+      <button type="submit" class="bg-blue-500 text-white font-semibold px-4 py-2 rounded-lg" (click)="onSubmit()"
+        [class.disabled-dropdown]="!monthSelected">Add</button>
+    </form>
+
+    <hr class="my-4 border-gray-300">
+
+    <h3 class="text-xl mb-4">Income List - {{ selectedMonth }}</h3>
+
+    <div class="overflow-x-auto">
+      <table class="table-auto border-collapse border w-full">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="px-4 py-2">Source of Income</th>
+            <th class="px-4 py-2">Amount</th>
+            <th class="px-4 py-2">Investments</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let income of getFilteredIncomes()" class="border-b">
+            <td class="px-4 py-2">{{ income.source }}</td>
+            <td class="px-4 py-2">{{ income.amount }}</td>
+            <td class="px-4 py-2">{{ income.investments }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <br>
+      <br>
+    </div>
+
+  </div>
+</div>

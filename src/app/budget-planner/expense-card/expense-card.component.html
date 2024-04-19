@@ -1,6 +1,6 @@
-<div class="container mx-auto px-4 lg:px-8">
-  <!-- Added padding for better spacing -->
+<div class="container mx-auto">
   <div class="max-w-xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
+    <!-- Adjusted max-w-xl -->
     <div class="p-4">
       <div class="flex items-center justify-between">
         <div class="flex items-center">
@@ -23,9 +23,10 @@
       </div>
     </div>
     <div class="p-4 flex justify-center">
-      <button type="button"
-        class="button bg-gradient-to-r font-bold py-2 px-4 border rounded-lg from-purple-500 to-indigo-600 text-sm text-white hover:text-gray-900 focus:outline-none focus:text-gray-900"
-        (click)="navigateToOtherPage()">Add Expense</button>
+      <a href="budget-planner/expense">
+        <button type="button"
+          class="button bg-gradient-to-r font-bold py-2 px-4 border rounded-lg from-purple-500 to-indigo-600 text-sm text-white hover:text-gray-900 focus:outline-none focus:text-gray-900">Add
+          Expense</button></a>
     </div>
   </div>
 </div>
