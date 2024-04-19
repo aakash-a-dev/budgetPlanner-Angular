@@ -43,7 +43,7 @@ marchIncomes: any[] = [
       month: ['', Validators.required],
       source: ['', Validators.required],
       amount: ['', Validators.required],
-      investment: ['', Validators.required],
+      investment: [''],
 
     })
   }
@@ -69,8 +69,35 @@ marchIncomes: any[] = [
     }
     return filteredIncomes;
   }
+onSubmit() {
+  if (this.incomeForm.valid) {
+    const newIncome = this.incomeForm.value;
+    switch (this.selectedMonth) {
+      case 'January':
+        this.januaryIncomes.push(newIncome);
+        break;
+      case 'February':
+        this.februaryIncomes.push(newIncome);
+        break;
+      case 'March':
+        this.marchIncomes.push(newIncome);
+        break;
+      case 'April':
+        this.aprilIncomes.push(newIncome);
+        break;
+      default:
+        break;
+    }
+    // Recalculate total income
+    this.calculateTotalIncome(this.selectedMonth);
+    console.log("New income added. Total income recalculated.");
+  } else {
+    console.log("Form is invalid. Income not added.");
+  }
+  this.incomeForm.reset();
+  this.incomeForm.patchValue({ month: '', source: '', amount: '', investments: '' });
+}
 
-  onSubmit() { }
   
   onChange(event: any) {
     this.selectedMonth = event.target.value;
