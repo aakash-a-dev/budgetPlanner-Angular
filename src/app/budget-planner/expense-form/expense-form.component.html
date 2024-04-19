@@ -1,1 +1,72 @@
-<p>expense-form works!</p>
+<app-navbar></app-navbar>
+
+<div class="main-container flex justify-center items-center mt-8">
+  <div class="container mx-auto">
+    <h2 class="text-3xl mb-4">Expense</h2>
+    <form [formGroup]="expenseForm" (ngSubmit)="onSubmitExpense()"
+      class="max-w-md mx-auto p-4 bg-white shadow-md rounded-lg">
+      <div class="mb-4">
+        <label for="month" class="block font-semibold">Select Month</label>
+        <select formControlName="month" id="month"
+          class="form-select mt-1 block w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          (change)="onChangeExpense($event)">
+          <option value="" disabled>Select Month</option>
+          <option value="January">January</option>
+          <option value="February">February</option>
+          <option value="March">March</option>
+        </select>
+      </div>
+      <div class="total-expense mb-4">
+        Total expense for {{ selectedMonth }}: ${{ calculateTotalExpense(selectedMonth) }}
+      </div>
+      <div class="mb-4">
+        <label for="expenseType" class="block font-semibold">Expense Type:</label>
+        <select formControlName="expenseType" id="expenseType"
+          class="form-select mt-1 block w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          [class.disabled-dropdown]="!monthSelected">
+          <option value="" disabled>Select Expense Type</option>
+          <option value="Rent">Rent</option>
+          <option value="Groceries">Groceries</option>
+          <option value="Utilities">Utilities</option>
+        </select>
+      </div>
+      <div class="mb-4">
+        <label for="expenseAmount" class="block font-semibold">Amount:</label>
+        <input type="number" formControlName="expenseAmount" id="expenseAmount"
+          class="form-input mt-1 block w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          placeholder="Enter amount" [class.disabled-dropdown]="!monthSelected">
+      </div>
+      <button type="submit" class="bg-blue-500 text-white font-semibold px-4 py-2 rounded-lg"
+        (click)="onSubmitExpense()" [class.disabled-dropdown]="!monthSelected">Add Expense</button>
+    </form>
+
+    <hr class="my-4 border-gray-300">
+
+    <h3 class="text-xl mb-4">Expense List - {{ selectedMonth }}</h3>
+
+    <div class="overflow-x-auto">
+      <table class="table-auto border-collapse border w-full">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="px-4 py-2">Expense Type</th>
+            <th class="px-4 py-2">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let expense of getFilteredExpenses()" class="border-b">
+            <td class="px-4 py-2">{{ expense.expenseType }}</td>
+            <td class="px-4 py-2">{{ expense.expenseAmount }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <br>
+      <br>
+    </div>
+
+    <div class="input-form mt-4">
+      <button class="bg-blue-500 text-white font-semibold px-4 py-2 rounded-lg mr-2" (click)="onBack()">Back</button>
+      <button class="bg-blue-500 text-white font-semibold px-4 py-2 rounded-lg" (click)="saveForm()">Save</button>
+    </div>
+  </div>
+</div>

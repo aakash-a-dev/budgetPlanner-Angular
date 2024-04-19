@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-income-form',
   standalone: true,
@@ -33,7 +34,7 @@ marchIncomes: any[] = [
 { source: 'Salary', amount: 8500, investments: '401(k)' },
 { source: "Rental Income", amount: 100, investments: 'Real Estate'}
 ]
-  constructor(public fb: FormBuilder) { 
+  constructor(public fb: FormBuilder, public router: Router) { 
     const currentDate = new Date();
     this.selectedMonth = currentDate.toLocaleDateString('default', { month: 'long' });
   };
@@ -126,5 +127,14 @@ onSubmit() {
       totalIncome += income.amount;
     }
     return totalIncome
+  }
+
+  
+  saveForm() {
+    console.log("Form saved!");
+  }
+
+  onBack() {
+    this.router.navigate(['/budget-planner/dashboard']);
   }
 }
